@@ -103,15 +103,16 @@ Where-as the content repository is something you clone on a local machine in ord
 
 Bare repositories only contain the .git folder and no working copies of the files in the repository. Bare repositories are primarily used for sharing, allowing different developers / teams to push their local repositories into the bare repositories. A bare repository cannot perform a git pull, as it doesn't have a working copy of the files.
 
-We can clone an existing repository as a bare-repository like this :
+We can clone our existing github repository as a bare-repository like this:
 
-	Davys-MacBook-Air:bare-wheat ddewaele$ git clone --bare git@github.com:creationix/howtonode.org.git
-	Cloning into bare repository howtonode.org.git...
-	remote: Counting objects: 2894, done.
-	remote: Compressing objects: 100% (1163/1163), done.
-	remote: Total 2894 (delta 1774), reused 2798 (delta 1692)
-	Receiving objects: 100% (2894/2894), 2.72 MiB | 365 KiB/s, done.
-	Resolving deltas: 100% (1774/1774), done.
+	ubuntu@domU-12-31-39-09-25-44:~/node$ git clone --bare git@github.com:ddewaele/node-wheat-blog-template.git
+	Cloning into bare repository node-wheat-blog-template.git...
+	remote: Counting objects: 20, done.
+	remote: Compressing objects: 100% (8/8), done.
+	remote: Total 20 (delta 2), reused 18 (delta 0)
+	Receiving objects: 100% (20/20), done.
+	Resolving deltas: 100% (2/2), done.
+
 
 Notice how in contrast with a standard clone, cloning happens into a bare repository howtonode.org.git (**notice the .git suffix**).
 
