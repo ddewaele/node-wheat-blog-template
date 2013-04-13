@@ -1,0 +1,45 @@
+{
+  "name": "node-wheat-blog-template",
+  "version": "0.0.1",
+  "description": "A working template to start a node/wheat/git powered blog",
+  "main": "index.js",
+  "dependencies": {
+    "creationix": "~0.3.1",
+    "stack": "~0.1.0",
+    "wheat": "~0.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ddewaele/node-wheat-blog-template.git"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "dependencies": {
+    "stack": ">=0.0.3",
+    "creationix": ">=0.1.2",
+    "wheat": ">=0.2.0",
+    "cluster": ">=0.6.4"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "git",
+    "wheat",
+    "blog",
+    "node",
+    "gith"
+  ],
+  "author": "Davy De Waele",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
+}
