@@ -4,7 +4,7 @@ Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
 Categories: node,blog,wheat
 
-Here is some intro text.
+IMPORTANT : unfinished article !!! 
 
 In this article I'll show you how to setup a Node / Git powered blog using the 
 <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> created by Tim Caswell.
