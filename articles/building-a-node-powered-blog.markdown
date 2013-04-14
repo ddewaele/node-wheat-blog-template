@@ -133,7 +133,77 @@ You can also turn a standard git repo into a bare one using the following comman
 In order to start the blow, you need to have
 
 -The necessary node module dependencies in place.
--A bootstrap script available (in our case server/server.js)
+-A bootstrap script available (in our case server/server.js + a shell script)
+
+If you place a package.json file in the root of the Bare repository, you can install all the required dependencies in one shot by executing the **npm install** command. The content of this package.json file can be found here :
+
+	https://raw.github.com/ddewaele/node-wheat-blog-template/master/package.json
+
+Embedded content :
+
+	{
+	  "name": "node-wheat-blog-template",
+	  "version": "0.0.1",
+	  "description": "A working template to start a node/wheat/git powered blog",
+	  "main": "index.js",
+	  "dependencies": {
+	    "creationix": "~0.3.1",
+	    "stack": "~0.1.0",
+	    "wheat": "~0.2.6"
+	  },
+	  "devDependencies": {},
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	  },
+	  "repository": {
+	    "type": "git",
+	    "url": "git@github.com:ddewaele/node-wheat-blog-template.git"
+	  },
+	  "engines": {
+	    "node": ">=0.4.0"
+	  },
+	  "dependencies": {
+	    "stack": ">=0.0.3",
+	    "creationix": ">=0.1.2",
+	    "wheat": ">=0.2.0",
+	    "cluster": ">=0.6.4"
+	  },
+	  "devDependencies": {
+
+	  },
+	  "scripts": {
+	    "start": "node server/server.js"
+	  },
+	  "keywords": [
+	    "git",
+	    "wheat",
+	    "blog",
+	    "node",
+	    "gith"
+	  ],
+	  "author": "Davy De Waele",
+	  "license": "BSD",
+	  "readmeFilename": "README.md",
+	  "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
+	}	
+
+In order to start the server, we need to have the **server.js** file in the **server** folder. The content of the server.js can be found here.
+
+https://raw.github.com/ddewaele/node-wheat-blog-template/master/server/server.js
+
+Content :
+
+	// Just a basic server setup for this site
+	var Stack = require('stack'),
+	    Creationix = require('creationix'),
+	    Http = require('http');
+
+	Http.createServer(Stack(
+	  Creationix.log(),
+	  require('wheat')(__dirname +"/..")
+	)).listen(80);
+
+As you can see, it starts an HTTP server on port 80 with the Wheat blog engine.
 
 When you access your blog using the following URL :
 http://localhost:3334/content-syndication-with-node
@@ -145,6 +215,7 @@ You'll see that the server generates the following output :
 	GET /logo.png 200 Content-Type=image/png Content-Length=6076
 	GET /groovepaper.png 200 Content-Type=image/png Content-Length=40723
 	GET /print.css 200 Content-Type=text/css Content-Length=248
+
 
 
 ### Committing and pushing content to the blog
@@ -163,10 +234,21 @@ We'll use <a href="https://github.com/danheberden/gith/blob/master/lib/gith.js" 
 
 As soon as we push something to the GitHub repository the Webhook URL will be called, and we'll update the git bare repository.
 
+This is done using the following command
 
-	cd /home/user/howtonode.org
+	git fetch origin master:master
+
+
+In a setup where you aren't using Github, and you just have a git repo running on your server, 
+
+	cd /home/user/blog
 	git pull git@github.com:creationix/howtonode.org master
 	git push ../howtonode.git
+
+
+
+
+
 
 
 

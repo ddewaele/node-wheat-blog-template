@@ -6,5 +6,5 @@ var Stack = require('stack'),
 Http.createServer(Stack(
   Creationix.log(),
   require('wheat')(__dirname +"/..")
-)).listen(8000);
+)).listen(80);
 
