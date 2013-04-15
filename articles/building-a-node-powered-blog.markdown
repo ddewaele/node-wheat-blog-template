@@ -341,6 +341,8 @@ Once the files have been committed and pushed to the repo, we can pull in the ch
 GitHub offers a feature called WebHook URLs allowing you to add a url to take advantage of git’s post-receive hook. 
 Github wil send a POST request containing data related to a repository push to that url.
 
+![GitHub Webhooks](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/GitHubWebHooks.png)
+
 This is an ideal mechanism to use in our blog setup. In other words, when we push an article to our Github repository, a Webhook Url can be called, allowing us to update our bare git repository on our server.
 
 We'll use <a href="https://github.com/danheberden/gith/blob/master/lib/gith.js" target="_blank">Gith</a>, a simple node server that responds to github post-receive events in order to update our bare git repository.
@@ -350,14 +352,7 @@ As soon as we push something to the GitHub repository the Webhook URL will be ca
 	git fetch origin master:master
 
 
-In a setup where you aren't using Github, and you just have a git repo running on your server, 
-
-	cd /home/user/blog
-	git pull git@github.com:creationix/howtonode.org master
-	git push ../howtonode.git
-
-
-The complete Github Webhook script is also in the github repository and contains the following code :
+The [complete Github Webhook script](https://github.com/ddewaele/node-wheat-blog-template/blob/master/server/hook.js) is also in the github repository and contains the following code :
 
 
 	// create a gith server on port 700
@@ -386,6 +381,14 @@ The complete Github Webhook script is also in the github repository and contains
 		});
 
 	});
+
+In a setup where you aren't using Github, and you just have a git repo running on your server, 
+
+	cd /home/user/blog
+	git pull git@github.com:creationix/howtonode.org master
+	git push ../howtonode.git
+
+	
 
 ## Conclusion
 
