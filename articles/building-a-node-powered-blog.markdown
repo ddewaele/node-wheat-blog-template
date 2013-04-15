@@ -15,8 +15,7 @@ There are many Git based blog engines available (see references), but I opted fo
  - Supports categories (tags)
  - Is made by a great node developer
 
-The idea is simple... Content (blog articles) is pushed to a GitHub repository. A service hook on the GitHub repository
-is setup to trigger a pull to a local repository on the blog server. From that local repository, a push is executed to a bare git repository on the same server, where the Wheat engine is running.
+The idea is simple. We push content (blog articles) to a central Git repository (in this case Github). A post-receive gook on the git repository (Webhooks as GitHub calls them) is configured to POST data to a URL, allowing us to update a bare git repository on our blog server. The <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> is a node process running on our blog server that reads the bare git repository, and serves up our blog pages.
 
 ![Git Powered Blog](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/GitPoweredBlog.png)
 
@@ -47,6 +46,55 @@ In order for our Wheat powered blog to work, we need to install a couple of requ
 When a valid [package.json](https://raw.github.com/ddewaele/node-wheat-blog-template/master/package.json) file is available in your git repository (and I invite you to download the one from my repository), installing the dependencies can be reduced to a single command:
 
 	npm install
+
+The package.json file looks like this:
+
+	{
+	  "name": "node-wheat-blog-template",
+	  "version": "0.0.1",
+	  "description": "A working template to start a node/wheat/git powered blog",
+	  "main": "index.js",
+	  "dependencies": {
+	    "creationix": "~0.3.1",
+	    "stack": "~0.1.0",
+	    "wheat": "~0.2.6"
+	  },
+	  "devDependencies": {},
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	  },
+	  "repository": {
+	    "type": "git",
+	    "url": "git@github.com:ddewaele/node-wheat-blog-template.git"
+	  },
+	  "engines": {
+	    "node": ">=0.4.0"
+	  },
+	  "dependencies": {
+	    "stack": ">=0.0.3",
+	    "creationix": ">=0.1.2",
+	    "wheat": ">=0.2.0",
+	    "cluster": ">=0.6.4"
+	  },
+	  "devDependencies": {
+
+	  },
+	  "scripts": {
+	    "start": "node server/server.js"
+	  },
+	  "keywords": [
+	    "git",
+	    "wheat",
+	    "blog",
+	    "node",
+	    "gith"
+	  ],
+	  "author": "Davy De Waele",
+	  "license": "BSD",
+	  "readmeFilename": "README.md",
+	  "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
+	}	
+
 
 ##Ignoring unwanted files
 
@@ -151,62 +199,16 @@ You can also turn a standard git repo into a bare one using the following comman
 
 
 ## Starting the blog
-In order to start the blog, you need to have
 
--The necessary node module dependencies in place.
--A bootstrap script available (in our case server/server.js + a shell script)
+In order to start the blog, you need to have:
+
+ - The necessary node module dependencies in place.
+ - A bootstrap script available (in our case server/server.js and a shell script)
 
 As discussed in the **content repository** section, if you place a package.json file in the root of the Bare repository, you can install all the required dependencies in one shot by executing the **npm install** command. The content of this package.json file can be found here :
 
 	https://raw.github.com/ddewaele/node-wheat-blog-template/master/package.json
 
-Embedded content :
-
-	{
-	  "name": "node-wheat-blog-template",
-	  "version": "0.0.1",
-	  "description": "A working template to start a node/wheat/git powered blog",
-	  "main": "index.js",
-	  "dependencies": {
-	    "creationix": "~0.3.1",
-	    "stack": "~0.1.0",
-	    "wheat": "~0.2.6"
-	  },
-	  "devDependencies": {},
-	  "scripts": {
-	    "test": "echo \"Error: no test specified\" && exit 1"
-	  },
-	  "repository": {
-	    "type": "git",
-	    "url": "git@github.com:ddewaele/node-wheat-blog-template.git"
-	  },
-	  "engines": {
-	    "node": ">=0.4.0"
-	  },
-	  "dependencies": {
-	    "stack": ">=0.0.3",
-	    "creationix": ">=0.1.2",
-	    "wheat": ">=0.2.0",
-	    "cluster": ">=0.6.4"
-	  },
-	  "devDependencies": {
-
-	  },
-	  "scripts": {
-	    "start": "node server/server.js"
-	  },
-	  "keywords": [
-	    "git",
-	    "wheat",
-	    "blog",
-	    "node",
-	    "gith"
-	  ],
-	  "author": "Davy De Waele",
-	  "license": "BSD",
-	  "readmeFilename": "README.md",
-	  "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
-	}	
 
 In order to start the server, we need to have the **[server.js](https://raw.github.com/ddewaele/node-wheat-blog-template/master/server/server.js)** file in the **server** folder. The content of the server.js can be found here.
 
