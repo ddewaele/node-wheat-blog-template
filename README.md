@@ -4,8 +4,6 @@ Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
 Categories: node,blog,wheat
 
-IMPORTANT : unfinished article !!! 
-
 In this article I'll show you how to setup a Node / Git powered blog using the 
 <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> created by Tim Caswell.
 
@@ -347,22 +345,7 @@ This is an ideal mechanism to use in our blog setup. In other words, when we pus
 
 We'll use <a href="https://github.com/danheberden/gith/blob/master/lib/gith.js" target="_blank">Gith</a>, a simple node server that responds to github post-receive events in order to update our bare git repository.
 
-As soon as we push something to the GitHub repository the Webhook URL will be called, and we'll update the git bare repository.
-
-
-	// create a gith server on port 7000
-	var gith = require('gith').create( 7000 );
-
-	gith({
-	  repo: 'ddewaele/node-wheat-blog-template'
-	}).on( 'all', function( payload ) {
-	  console.log( 'Post-receive happened ...  time to update the blog....' );
-		console.log("Payload = " + JSON.stringify(payload));
-
-	});
-
-
-As soon as we receive the payload in git, we need to fetch the changes into our bare git repository.
+As soon as we push something to the GitHub repository the Webhook URL will be called, and we'll update the git bare repository by fetching the changes from the github repository using the following command:
 
 	git fetch origin master:master
 
@@ -373,6 +356,40 @@ In a setup where you aren't using Github, and you just have a git repo running o
 	git pull git@github.com:creationix/howtonode.org master
 	git push ../howtonode.git
 
+
+The complete Github Webhook script is also in the github repository and contains the following code :
+
+
+	// create a gith server on port 700
+	var gith = require('gith').create( 7000 );
+
+	gith({
+	  repo: 'ddewaele/node-wheat-blog-template'
+	}).on( 'all', function( payload ) {
+		console.log( 'Post-receive form Github');
+
+		// Execute a git fetch on the bare repo.
+		var gitRepoPath = "/home/ubuntu/node/node-wheat-blog-template.git";
+		var gitCommand = "git --git-dir " + gitRepoPath + " fetch origin master:master";
+
+		var sys = require('sys')
+		var exec = require('child_process').exec;
+		var fetchOutput = exec(gitCommand, function puts(error, stdout, stderr) {
+		        if (error) {
+		            console.log('Error occured \n[' + error+']');
+		        }
+		}
+		);
+
+		fetchOutput.on('exit', function (code) {
+			console.log('Child process exited with exit code '+code);
+		});
+
+	});
+
+## Conclusion
+
+Write-up conclusion.
 
 
 ##References
