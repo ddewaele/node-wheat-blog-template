@@ -406,7 +406,6 @@ Highly recommended !
 
 - [Howtonode.org code](https://github.com/creationix/howtonode.org)
 - [gith github webhooks for node](http://weblog.bocoup.com/introducing-gith-github-webhooks-for-node/)
-- 
 - [GitHub Post Receive Hooks](https://help.github.com/articles/post-receive-hooks)
 - [Wheat on Windows Azure](https://github.com/woloski/nodeonazure-blog)
 - [Wheat by creationix](https://github.com/creationix/wheat)
