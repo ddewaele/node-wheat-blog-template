@@ -21,26 +21,24 @@ The idea is simple. We push content (blog articles) to a central Git repository 
 
 The first thing we'll do is create a new git repository. 
 
-This will be our **content repository** that holds our blog content (primarily blog posts and author information.). 
-Writers can clone or fork this repository and push their articles onto it.
+I'll refer to this repository as the **content repository** as it will hold our blog content (primarily blog posts and author information.). Writers can clone or fork this repository and push their articles onto it.
 
-The content repository will also be used to test the blog. The Wheat engine supports 2 modes
+The content repository will also be used to test the blog as the Wheat engine can be started in 2 modes
 
 - **Development mode**
 
 ![Development mode](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/git-node-wheat-development-mode.png)
 
-In this mode, the wheat engine is started in the content repository, and will pick up the content from the working directory. This allows us to test our blog without having to commit / push to the git repository. We simply edit our articles and the blog will be updated on the fly. In this mode, no caching is applied in order to ensure that articles can be tested immediately without having to wait for a cache expiration.
+In this mode, the wheat engine is started using the **content repository** and will pick up the content from the working directory. This allows us to test our blog without having to commit / push to the git repository. We simply edit our articles and the blog will be updated on the fly. In this mode no caching is applied in order to ensure that articles can be tested immediately without having to wait for a cache expiration.
 
 - **Production mode**
 
 ![Production mode](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/git-node-wheat-production-mode.png)
 
-In this mode, the wheat engine is started in the bare repository. As the bare repository doesn't have a working copy of the files in the repository, the wheat engine will query the git repository objects directly, allowing it to apply aggresive caching on it.
+In this mode, the wheat engine is started using the **bare repository**. As the **bare repository** doesn't have a working copy of the files in the repository, the wheat engine will query the git repository objects directly, allowing it to apply aggresive caching on it. Every article corresponds to a [40 charachter checksun hash](http://git-scm.com/book/en/Git-Internals-Git-Objects) that never changes as long as the article is unchanged.
 
 As content becomes available on this repository, we can pull it, and push it to a bare repository. The Wheat engine is configured to use this bare repository in order to render our blog as we'll see later on.
 
-The content repository can be hosted on Github or Bitbucket if you want to allow other people to provide content to it.
 
 **Creating the git content repository:**
 
