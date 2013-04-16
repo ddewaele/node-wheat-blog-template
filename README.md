@@ -393,7 +393,7 @@ The <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine<
 
 Not only does it allow you to create and publish articles very easily (all it takes ia a push to your repository), it also allows you to open up your blog to other collaborators (much like howtonode.org is doing).
 
-Also, as mentioned by the [Nodejitsu "Ten node applications that need to exist"](http://blog.nodejitsu.com/ten-node-apps-that-need-to-exist), Wheat is a great little git based blogging engine. (and Nodejitsu also used it).
+Also, as mentioned by the [Nodejitsu "Ten node applications that need to exist"](http://blog.nodejitsu.com/ten-node-apps-that-need-to-exist), Wheat is a great little git based blogging engine. (and Nodejitsu also uses it).
 
 The downside of Wheat is that it's not actively maintained and there doesn't seem to a big eco-system behind it like Jekyll or Toto.
 
