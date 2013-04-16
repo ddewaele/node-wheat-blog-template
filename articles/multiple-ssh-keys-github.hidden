@@ -2,8 +2,18 @@ Title: Multiple SSH key setup for Github
 Author: Davy De Waele
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 
+<div style="float: right; padding:20px"><img src="https://dl.dropboxusercontent.com/u/13246619/Node/SSH%20Keys/keys.jpg" /></div>
+SSH keypairs used as an authentication mechanism are great. Not only are they more secure than password based authentications, they are also a lot easier to use.
 
+Just make sure you have a private key safely tucked away in ~/.ssh/id_rsa and you can access any system that accepts your public key.
 
+But what happens when you have a whole bunch of different private keys to different systems.
+
+SSH config to the rescue !
+
+##SSH Config
+
+All you need to do is create a ~/.ssh/config file with the following content :
 
 
 	#github account1

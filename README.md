@@ -1,4 +1,4 @@
-Title: Building a Node powered blog
+Title: A Node powered Git blog using Wheat
 Author: Davy De Waele
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
@@ -388,7 +388,7 @@ In a setup where you aren't using Github, and you just have a git repo running o
 	git pull git@github.com:creationix/howtonode.org master
 	git push ../howtonode.git
 
-	
+
 
 ## Conclusion
 
