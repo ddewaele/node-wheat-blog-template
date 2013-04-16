@@ -40,14 +40,16 @@ In this mode, the wheat engine is started using the **bare repository**. As the 
 As content becomes available on this repository, we can pull it, and push it to a bare repository. The Wheat engine is configured to use this bare repository in order to render our blog as we'll see later on.
 
 
-**Creating the git content repository:**
+**Creating the git content repository**
+
+You can either choose to create a new content repository yourself
 
 	mkdir node-wheat-blog-template
 	cd node-wheat-blog-template/
 	git init
 	Initialized empty Git repository in /Users/ddewaele/Projects/Node/node-wheat-blog-template/.git/
 
-If you don't want to create a repository yourrself, you can simply clone [my blog repository](https://github.com/ddewaele/node-wheat-blog-template) to see how it works. It contains all the files that are discussed below.
+or you can simply clone [my blog repository](https://github.com/ddewaele/node-wheat-blog-template) to see how it works. It contains all the files that are discussed below.
 
 	git clone https://github.com/ddewaele/node-wheat-blog-template
 	cd node-wheat-blog-template/
@@ -60,7 +62,7 @@ In order for our Wheat powered blog to work, we need to install a couple of requ
 	npm install stack
 	npm install creationix
 
-When a valid [package.json](https://raw.github.com/ddewaele/node-wheat-blog-template/master/package.json) file is available in your git repository (and I invite you to download the one from my repository), installing the dependencies can be reduced to a single command:
+When a valid [package.json](https://github.com/ddewaele/node-wheat-blog-template/blob/master/package.json) file is available in your git repository (and I invite you to download the one from my repository), installing the dependencies can be reduced to a single command:
 
 	npm install
 
@@ -260,9 +262,13 @@ The content of the server.js looks like this (Feel free to change the listen por
 	  require('wheat')(__dirname +"/..")
 	)).listen(80);
 
+Just enter the command below :
+
+	node server/server.js
+
 As you can see, it starts an HTTP server on port 80 with the Wheat blog engine.
 
-When accessing the blog, you should see output similar to the one below in your console (meaning that everything is up and running).
+When accessing the blog (http://localhost), you should see output similar to the one below in your console (meaning that everything is up and running).
 
 	GET /content-syndication-with-node 200 Content-Type=text/html; charset=utf-8 Content-Length=20482
 	GET /style.css 200 Content-Type=text/css Content-Length=11143
@@ -380,25 +386,30 @@ The [complete Github Webhook script](https://github.com/ddewaele/node-wheat-blog
 
 	});
 
-In a setup where you aren't using Github, and you just have a git repo running on your server, 
-
-	cd /home/user/blog
-	git pull git@github.com:creationix/howtonode.org master
-	git push ../howtonode.git
-
-
 
 ## Conclusion
 
-Write-up conclusion....
+The <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> created by [Tim Caswell](https://twitter.com/creationix) allows us to power our blog using Git / Node.JS and that's a powerfull thing. 
+
+Not only does it allow you to create and publish articles very easily (all it takes ia a push to your repository), it also allows you to open up your blog to other collaborators (much like howtonode.org is doing).
+
+Also, as mentioned by the [Nodejitsu "Ten node applications that need to exist"](http://blog.nodejitsu.com/ten-node-apps-that-need-to-exist), Wheat is a great little git based blogging engine. (and Nodejitsu also used it).
+
+The downside of Wheat is that it's not actively maintained and there doesn't seem to a big eco-system behind it like Jekyll or Toto.
+
+The ability to use a markup language like Markdown is also a nice change from the propriatary WYSIWYG editors found on most blogs.
+
+Highly recommended !
 
 
 ##References
 
 - [Howtonode.org code](https://github.com/creationix/howtonode.org)
 - [gith github webhooks for node](http://weblog.bocoup.com/introducing-gith-github-webhooks-for-node/)
+- 
 - [GitHub Post Receive Hooks](https://help.github.com/articles/post-receive-hooks)
 - [Wheat on Windows Azure](https://github.com/woloski/nodeonazure-blog)
 - [Wheat by creationix](https://github.com/creationix/wheat)
 - [Node.JS library to read git repositories. ](https://github.com/creationix/node-git)
 - [A simple CLI tool for ensuring that a given script runs continuously (i.e. forever) ](https://github.com/nodejitsu/forever)
+- [Markdown reference](http://daringfireball.net/projects/markdown/basics)
