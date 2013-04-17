@@ -13,7 +13,7 @@ There are many Git based blog engines available (see references), but I opted fo
  - Supports categories (tags)
  - Is made by a great node developer
 
-The idea is simple. We push content (blog articles) to a central Git repository (in this case Github). A post-receive gook on the git repository (GitHub calls them) is configured to POST data to a URL, allowing us to update a bare git repository on our blog server. The <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> is a node process running on our blog server that reads the bare git repository, and serves up our blog pages.
+The idea is simple. We push content (blog articles) to a central Git repository (in this case Github). A post-receive hook on the git repository (GitHub calls them) is configured to POST data to a URL, allowing us to update a bare git repository on our blog server. The <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> is a node process running on our blog server that reads the bare git repository, and serves up our blog pages.
 
 ![Git Powered Blog](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/GitPoweredBlog.png)
 
