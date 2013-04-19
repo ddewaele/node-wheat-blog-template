@@ -1,4 +1,4 @@
-Title: Setting up SSH authentication with your server
+Title: Setting up SSH access to your server
 Author: Davy De Waele
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
