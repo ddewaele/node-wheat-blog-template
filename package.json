@@ -24,7 +24,8 @@
     "creationix": ">=0.1.2",
     "wheat": ">=0.2.0",
     "cluster": ">=0.6.4",
-    "forever": ">=0.10.0"
+    "forever": ">=0.10.0",
+    "connect": ">=2.4.3"
   },
   "devDependencies": {
 
