@@ -359,7 +359,7 @@ As soon as we push something to the GitHub repository the Webhook URL will be ca
 The [complete Github Webhook script](https://github.com/ddewaele/node-wheat-blog-template/blob/master/server/hook.js) is also in the github repository and contains the following code :
 
 
-	// create a gith server on port 700
+	// create a gith server on port 7000
 	var gith = require('gith').create( 7000 );
 
 	gith({
