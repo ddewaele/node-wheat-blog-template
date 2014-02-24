@@ -194,7 +194,7 @@ You can use the following command :
 ### Articles
 
 Article pages are written in Markdown. The include some meta-data on top (author,title,categories,date...).
-If you want to see the raw syntex of the [article you are reading now](https://raw.github.com/ddewaele/node-wheat-blog-template/master/articles/building-a-node-powered-blog.markdown), feel free to click the link.
+If you want to see the raw syntex of the [article you are reading now](https://raw.github.com/ddewaele/node-wheat-blog-template/master/articles/node-powered-git-blog-with-wheat.markdown), feel free to click the link.
 
 
 	Title: Building a Node powered blog
