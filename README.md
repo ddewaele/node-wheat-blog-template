@@ -35,7 +35,7 @@ In this mode, the wheat engine is started using the **content repository** and w
 
 ![Production mode](https://dl.dropboxusercontent.com/u/13246619/Node/GitPoweredBlog/git-node-wheat-production-mode.png)
 
-In this mode, the wheat engine is started using the **bare repository**. As the **bare repository** doesn't have a working copy of the files in the repository, the wheat engine will query the git repository objects directly, allowing it to apply aggresive caching on it. Every article corresponds to a [40 charachter checksun hash](http://git-scm.com/book/en/Git-Internals-Git-Objects) that never changes as long as the article is unchanged.
+In this mode, the wheat engine is started using the **bare repository**. As the **bare repository** doesn't have a working copy of the files in the repository, the wheat engine will query the git repository objects directly, allowing it to apply aggresive caching on it. Every article corresponds to a [40 character checksun hash](http://git-scm.com/book/en/Git-Internals-Git-Objects) that never changes as long as the article is unchanged.
 
 As content becomes available on this repository, we can pull it, and push it to a bare repository. The Wheat engine is configured to use this bare repository in order to render our blog as we'll see later on.
 
